@@ -9,7 +9,17 @@ export default defineConfig({
     vuetify({ autoImport: true }) // Add this line
    
   ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   build: {
     outDir: 'dist', // Vercel looks for this directory as the output
   },
 });
+
+
+
+
