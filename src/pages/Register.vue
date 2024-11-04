@@ -41,10 +41,12 @@
           v-model="password"
           color="green"
           label="Password"
+           type='password'
           variant="outlined"
         ></v-text-field>
         <v-text-field
         density="compact"
+         type='password'
           v-model="comfrimPassword"
           color="green"
           label="Comfirm password"

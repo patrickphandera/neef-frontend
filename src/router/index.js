@@ -59,26 +59,14 @@ const router = createRouter({
 });
 
 
-// router.beforeEach((to, from, next) => {
-//   const isAuthenticated = Boolean(localStorage.getItem('token')); 
-//   if (to.name !== 'Login' && !isAuthenticated) {
-//     next({ name: 'Login' });
-//   } else {
-//     next();
-//   }
-// });
-
+const publicPaths = ['/login', '/register'];
 router.beforeEach((to, from, next) => {
   const isAuthenticated = Boolean(localStorage.getItem('token'));
-  // Allow access only to 'Login' and 'Register' if not authenticated
-  if (!isAuthenticated && to.name !== 'Login' && to.name !== 'Register') {
-    next({ name: 'Login' });
+  if (isAuthenticated || publicPaths.includes(to.path)) {
+    next(); 
   } else {
-    next();
+    next('/login'); 
   }
 });
-
-
-
 
 export default router;
