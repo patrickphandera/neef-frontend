@@ -39,6 +39,7 @@
         <v-text-field
         density="compact"
           v-model="password"
+           type='password'
           color="green"
           label="Password"
           variant="outlined"
@@ -47,6 +48,7 @@
         density="compact"
           v-model="comfrimPassword"
           color="green"
+           type='password'
           label="Comfirm password"
           variant="outlined"
         ></v-text-field>
