@@ -68,4 +68,17 @@ const router = createRouter({
 //   }
 // });
 
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = Boolean(localStorage.getItem('token'));
+  // Allow access only to 'Login' and 'Register' if not authenticated
+  if (!isAuthenticated && to.name !== 'Login' && to.name !== 'Register') {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
+});
+
+
+
+
 export default router;
