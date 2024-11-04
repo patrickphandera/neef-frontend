@@ -58,21 +58,9 @@ const router = createRouter({
   routes,
 });
 
-// Navigation Guard
-// router.beforeEach((to, from, next) => {
-//   // List of routes that don’t require authentication
-//   const publicPages = ['HomePage', 'AboutPage', 'Register', 'Login', 'Otp'];
-//   const authRequired = !publicPages.includes(to.name);
-//   const isAuthenticated = localStorage.getItem('token'); // Replace 'token' with the key name used in localStorage
 
-//   if (authRequired && !isAuthenticated) {
-//     next('/login'); // Redirect to login page if not authenticated
-//   } else {
-//     next(); // Continue to the route if authenticated or accessing a public page
-//   }
-// });
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = Boolean(localStorage.getItem('token')); // Adjust if token is stored differently
+  const isAuthenticated = Boolean(localStorage.getItem('token')); 
   if (to.name !== 'Login' && !isAuthenticated) {
     next({ name: 'Login' });
   } else {
