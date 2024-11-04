@@ -3,7 +3,7 @@
 import axios from 'axios';
 let token=localStorage.getItem('token');
 // Access the base URL from environment variables
-const API_BASE_URL ='http://127.0.0.1:5000'
+const API_BASE_URL ='https://neefaiappbackend-1.onrender.com'
 // const API_BASE_URL="http://127.0.0.1:5000"
 // Function to handle user registration
 const headers={
