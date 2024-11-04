@@ -6,20 +6,11 @@ import vuetify from 'vite-plugin-vuetify';
 export default defineConfig({
   plugins: [
     vue(),
-    vuetify({ autoImport: true }) // Add this line
-   
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
-  build: {
-    outDir: 'dist', // Vercel looks for this directory as the output
+    vuetify({ autoImport: true }), // Add this line
+  ],build: {
+    outDir: 'dist', // Ensure this is set to 'dist'
+    // Other build options...
   },
+  base: '/' 
+
 });
-
-
-
-
