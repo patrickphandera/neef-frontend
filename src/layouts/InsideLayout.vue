@@ -5,6 +5,7 @@
         app
         permanent
         right
+        v-if='toggle'
         width="280"
         elevation="1"
       >
@@ -16,7 +17,7 @@
             <template v-slot:prepend>
               <v-avatar image="/download.jfif"></v-avatar>
               
-              <div class="ma-1 text-subtitle-2">Antony Kamowa</div><v-divider vertical></v-divider>
+              <div class="ma-1 text-subtitle-2">{{user.fullname}}</div><v-divider vertical></v-divider>
               <div class="ma-1 font-weight-bold">Loan Officer</div>
           
             </template>
@@ -53,17 +54,13 @@
               </v-avatar>
              
               <div class="ma-2">Verify applicant</div>
-              
-             
             </template>
             <template v-slot:append>
-             
-             
           <v-icon>mdi-chevron-right</v-icon>
             </template>
            </v-list-item>
           
-           <!-- <v-list-item value="today" to="/loan-officer/settings">
+           <v-list-item value="today" to="/loan-officer/settings">
             <template v-slot:prepend>
               <v-avatar  size="x-small">
                 <v-icon icon="mdi-tune"></v-icon>
@@ -78,48 +75,43 @@
              
               <v-icon>mdi-chevron-right</v-icon>
             </template>
-           </v-list-item>      -->
+           </v-list-item>     
         </v-list>
       </v-navigation-drawer>
-
-      <!-- App Bar -->
       <v-app-bar
         density="compact"
         elevation="1"
       >
-        <v-btn icon>
+        <v-btn icon @click='toggle=!toggle'>
           <v-icon>mdi-menu-open</v-icon>
         </v-btn>
-
         <div class="py-2" ><v-avatar size="small" image='/download (15).jpeg'>
-          
         </v-avatar></div><div class="mx-2 font-weight-black">NEEF</div>
-
         <v-spacer></v-spacer>
-
-       
-       
         <v-spacer></v-spacer>
         <template v-slot:append>
           <!-- <v-btn color="black" variant="outlined"  class="mr-2 text-none"  to='/auth/login'>Docs</v-btn> -->
           
-          <v-btn color="black" variant="flat"  class="mr-2 text-none" append-icon="mdi-logout" to='/auth/login'>Logout</v-btn></template>
+          <v-btn color="green" variant="flat"  class="mr-2 text-none" append-icon="mdi-logout" to='/login'>Logout</v-btn></template>
       </v-app-bar>
-   <v-main class="bg-grey-lighten-3">
+   <v-main class="bg-grey-lighten-3" scrollable>
     <router-view>
-      
     </router-view>
    </v-main>
-    
   </v-app>
 </template>
 
 
 <script>
+import {putData,postData,getData} from '../services/rest.services'
 export default {
   name: 'InsideLayout',
   data() {
     return {
+      toggle:false,
+      user:{
+          id :localStorage.getItem('user'),
+        },
       tab: null,
       items: [
         {
@@ -146,6 +138,23 @@ export default {
       ],
     };
   },
+  methods:{
+    async getInfor() {
+      try {
+        this.gameloaded=false
+        const response = await getData('user',this.user.id);
+        this.user=await response
+  this.gameloaded=true
+      } catch (error) {
+        // Handle login errors (e.g., show an error message)
+        this.error=String(error.response)
+        console.error('Login failed:', error);
+      }
+    }
+  },
+  async created(){
+await this.getInfor()
+  }
 };
 </script>
 

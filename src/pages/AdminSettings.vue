@@ -1,200 +1,146 @@
 <template>
   <div>
-    <v-row no-gutters>
-      <v-col cols="12" md="10">
+   
+  
+    <div >
+    
+  <div >
+    <v-row>
+        <v-col v-col cols="12 ">
         
-        <div class="mx-2">
-        <!-- <v-card class="bg-white rounded-xl my-4 " density="compact"> -->
-          <v-text-field
-            v-model="searchQuery"
-            density="compact"
-            label="Search Users"
-            variant="solo"
-            class=" my-4 ml-2"
-            append-inner-icon="mdi-magnify"
-          ></v-text-field>
-        <!-- </v-card> -->
-      </div>
-      </v-col>
-      <v-col cols="12" md="2">
-        <v-btn
-          append-icon="mdi-plus"
-          variant="flat"
-          color='green'
-          class="text-none elevation-1 mx-2 text-white mt-4 mb-2 "
-          @click="dialog=true"
+    <v-list class="   rounded-lg elevation-0 bg-transparent ">
+  <v-list-item
+  > 
+  <v-btn
+         color='green'
+          append-icon="mdi-account"
+          class="" variant="outline" size="30" 
         >
-          Add user
-        </v-btn>
-      </v-col>
-    </v-row>
-
-    <v-row v-if="!gameloaded" align="center" justify="center" dense class="mb-1 mx-1">
-      <v-col cols="12 mt-2">
-        <SkeletonCard />
-      </v-col>
-    </v-row>
-
-    <div class="mr-3" v-if="gameloaded">
-      <v-data-table
-        class="pa-4 ma-2 rounded-lg"
-        :headers="headers"
-        :items="users"
-        :sort-by="[{ key: 'phone', order: 'asc' }]"
-      >
-        <template v-slot:item.actions="{ item }">
-          <v-icon class="me-2" @click="editItem(item)">mdi-square-edit-outline</v-icon>
-          
-          <v-icon color="warning" @click="deleteItem(item)">mdi-delete</v-icon>
-        </template>
-        <template v-slot:no-data>
-          <v-btn color="primary" @click="initialize">Reset</v-btn>
-        </template>
-      </v-data-table>
-    </div>
-    <!-- Add/Edit User Dialog -->
-    <v-dialog v-model="dialog" max-width="500px">
-      <v-card>
-        <v-card-title class="bg-green">
-          <span class="text-subtitle-1 text-lowercase font-weight-black">{{ formTitle }}</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row no-gutters>
-              <v-col cols="12">
-                <v-text-field variant="outlined" v-model="editedItem.fullname" label="Fullname" density="compact"></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field variant="outlined" v-model="editedItem.email" label="Email" density="compact"></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field variant="outlined" v-model="editedItem.phone" label="Phone" density="compact"></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-select
-                  density="compact"
-                  :items="['user', 'admin', 'loan manager']"
-                  variant="outlined"
-                  v-model="editedItem.role"
-                  label="Role"
-                ></v-select>
-              </v-col>
-              <v-col cols="12">
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions>
-          <v-btn color="green text-capitalize" variant="outlined" @click="close">Cancel</v-btn>
-          <v-btn class="bg-green text-capitalize" variant="outline" @click="save">Add</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-    <!-- Delete Confirmation Dialog -->
-    <v-dialog v-model="dialogDelete" max-width="500px">
-      <v-card>
-        <v-card-title class="text-h5">Are you sure you want to delete this user?</v-card-title>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green" variant="text" @click="closeDelete">Cancel</v-btn>
-          <v-btn color="green" variant="text" @click="deleteItemConfirm">OK</v-btn>
-          <v-spacer></v-spacer>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </div>
-</template>
-
-<script>
-import { getAllData, putData,postData } from '../services/rest.services';
-
-
-export default {
-
-  data() {
-    return {
-      gameloaded: false,
-      dialog: false,
-      dialogDelete: false,
-      headers: [
-        { title: 'Fullname', key: 'fullname' },
-        { title: 'Email', key: 'email' },
-        { title: 'Phone', key: 'phone' },
-        { title: 'Role', key: 'role' },
-        { title: 'Actions', key: 'actions', sortable: false },
-      ],
-      users: [],
-      editedIndex: -1,
-      editedItem: {
-        fullname: '',
-        email: '',
-        phone: '',
-        role: '',
-       
-      },
-      defaultItem: {
-        fullname: '',
-        email: '',
-        phone: '',
-        role: '',
         
+        </v-btn> <span class="ml-2">Profile</span>
+  <template v-slot:append>
+          <div class="justify-self-end mr-2" > 
+          
+          </div>
+        </template></v-list-item>
+  </v-list>
+  </v-col>
+  </v-row>
+  </div>
+  <div class="ml-2">
+    <v-row class="elevation-1 bg-white ma-2 rounded-lg pt-4">
+        <v-col cols="12">
+            <v-text-field
+            density="compact"
+    variant="outlined"
+      label="Full name"
+      v-model="user.fullname"
+      prepend-inner-icon="mdi-text"
+      class="mx-2"
+      ></v-text-field>
+      <v-text-field
+      prepend-inner-icon="mdi-account"
+      density="compact"
+       v-model="user.phone"
+      variant="outlined"
+      label="Phone"
+      class="mx-2"
+      ></v-text-field>
+      <v-text-field
+      prepend-inner-icon="mdi-email"
+      density="compact"
+      variant="outlined"
+       v-model="user.email"
+      label="Email"
+      class="mx-2"
+      ></v-text-field>
+      <v-select
+      density="compact"
+       v-model="user.role"
+     variant="outlined"
+      label="Role"
+      :items="['admin','loan-officer']"
+      class="mx-2"
+      ></v-select>     
+        </v-col>
+        
+    </v-row>
+  </div>
+  <div >
+     
+       <v-row>
+           <v-col v-col cols="12 ">
+           
+       <v-list class="   rounded-lg elevation-0 bg-transparent">
+     <v-list-item
+     > 
+     <template v-slot:append>
+             <div class="justify-self-end mr-2" > <v-btn color='green' variant='flat' @click="submit()"
+          class="  text-capitalize "
+        >
+          Update Profile 
+        </v-btn>
+             </div>
+           </template></v-list-item>
+     </v-list>
+     </v-col>
+     </v-row>
+     </div>
+
+  </div>
+  </div>
+  </template>
+  <script>
+  import {putData,postData,getData} from '../services/rest.services'
+    export default {
+      data: () => ({
+        gameloaded:false,
+        user_:{},
+        user:{
+          id :localStorage.getItem('user'),
+        },
+      }),
+      methods:{
+async submit(){
+  try{
+
+
+let user= await {
+  email:this.user.email,fullname:this.user.fullname,phone:this.user.phone,role:this.user.role
+}
+ let user_=await putData(user,`user/${this.user._id}`)
+ this.user_ =await user_
+ alert('User updated successfully')
+}catch(err){
+alert('Update failed due to unknown error')
+}
+},       
+ async getInfor() {
+      try {
+        this.gameloaded=false
+        const response = await getData('user',this.user.id);
+        this.user=await response
+  this.gameloaded=true
+      } catch (error) {
+        // Handle login errors (e.g., show an error message)
+        this.error=String(error.response)
+        console.error('Login failed:', error);
+      }
+    }
       },
-    };
-  },
-  computed: {
-    formTitle() {
-      return this.editedIndex === -1 ? 'New User' : 'Edit User';
-    },
-  },
-  created() {
-    this.initialize();
-  },
-  methods: {
-    async initialize() {
-      try {
-        this.gameloaded = false;
-        this.users = await getAllData('users');
-        this.gameloaded = true;
-      } catch (error) {
-        console.error('Failed to fetch users:', error);
+      async mounted(){
+  await this.getInfor()
       }
-    },
-    editItem(item) {
-      this.editedIndex = this.users.indexOf(item);
-      this.editedItem = { ...item };
-      this.dialog = true;
-    },
-    async save() {
-      try {
-        if (this.editedIndex > -1) {
-          Object.assign(this.users[this.editedIndex],this.editedItem);
-          let updatedUser = await putData(this.editedItem, `users/${this.editedItem._id}`);
-          Object.assign(this.users[this.editedIndex], updatedUser);
-          window.alert('User updated successfully')
-          this.dialog = true;
-        } else {
-          let newUser = await postData(form, 'users');
-          this.users.push(newUser);
-          window.alert('User added successfully')
-          this.dialog = true;
-        }
-        this.close();
-      } catch (error) {
-        console.error('Failed to save user:', error);
-        window.alert('Failed to save user')
-      }
-    },
-    close() {
-      this.dialog = false;
-      this.$nextTick(() => {
-        this.editedItem = { ...this.defaultItem };
-        this.editedIndex = -1;
-      });
-    },
-  },
-};
-</script>
-
-
+    }
+  </script>
+  <style scoped>
+  .bg-blue-darken-4 {
+    background-color: #236b15; /* Your primary color */
+    color: whitesmoke;
+  }
+  
+  .bg-secondary1 {
+    background-color: grey-lighten-4; /* Your secondary color */
+  }
+  </style>
+  

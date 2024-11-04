@@ -34,10 +34,10 @@ export async function loginUser(credentials) {
     if (response.data.access_token) {
       // Save the token to local storage
       localStorage.setItem('token', response.data.access_token);
-      localStorage.setItem('user', response.data.user_id);
+      localStorage.setItem('user', response.data.user);
       
     }
-    console.log(response)
+
     // Return the response data (e.g., user info, success message)
     return response.data;
   } catch (error) {

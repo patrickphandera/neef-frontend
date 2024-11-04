@@ -20,7 +20,7 @@ const routes = [
     redirect: '/login',
     component: MainLayout,
     children: [
-      { path: 'login', component: Login ,name:'Login'},
+      { path: 'login', component: Login },
       { path: 'register', component: Register },
       { path: 'otp', component: Otp }
     ]
@@ -32,8 +32,7 @@ const routes = [
     component: InsideLayout,
     children: [
       { path: 'docs', component: Docs },
-      { path: 'verify', component: Verify },
-      { path: 'settings', component: Settings }
+      { path: 'verify', component: Verify }
     ]
   },
   {
@@ -59,24 +58,16 @@ const router = createRouter({
 });
 
 // Navigation Guard
-// router.beforeEach((to, from, next) => {
-//   // List of routes that don’t require authentication
-//   const publicPages = ['HomePage', 'AboutPage', 'Register', 'Login', 'Otp'];
-//   const authRequired = !publicPages.includes(to.name);
-//   const isAuthenticated = localStorage.getItem('token'); // Replace 'token' with the key name used in localStorage
-
-//   if (authRequired && !isAuthenticated) {
-//     next('/login'); // Redirect to login page if not authenticated
-//   } else {
-//     next(); // Continue to the route if authenticated or accessing a public page
-//   }
-// });
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = Boolean(localStorage.getItem('token')); // Adjust if token is stored differently
-  if (to.name !== 'Login' && !isAuthenticated) {
-    next({ name: 'Login' });
+  // List of routes that don’t require authentication
+  const publicPages = ['HomePage', 'AboutPage', 'Register', 'Login', 'Otp'];
+  const authRequired = !publicPages.includes(to.name);
+  const isAuthenticated = localStorage.getItem('token'); // Replace 'token' with the key name used in localStorage
+
+  if (authRequired && !isAuthenticated) {
+    next('/login'); // Redirect to login page if not authenticated
   } else {
-    next();
+    next(); // Continue to the route if authenticated or accessing a public page
   }
 });
 

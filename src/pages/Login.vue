@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center font-weight-black text-h6 elevation-2 text-uppercase pa-4">
-      Neef Loan reconmender
+      loan eligibility checker
     </div>
     <v-card
       class="mx-auto mt-12 elevation-1 "
@@ -10,14 +10,12 @@
     >     <div class="text-center font-weight-black pa-2">LOGIN</div>
     <v-container class="text-black text-left text-green d-flex justify-center">
  
-      <v-img src="/public/download (15).jpeg" height="80px" width="auto"></v-img>
+      <v-img src="/download (15).jpeg" height="80px" width="auto"></v-img>
       <div>
         <v-icon icon="mdi-chevron-menu" color="green" size="12"></v-icon>
       </div>
     </v-container>
       <v-container>
-       
-  
         <v-text-field
         density="compact"
           v-model="credentials.username"
@@ -25,9 +23,6 @@
           label="Username"
          variant="outlined"
         ></v-text-field>
- 
-        
-  
         <v-text-field
         density="compact"
           v-model="credentials.password"
@@ -35,38 +30,24 @@
           label="Password"
           variant="outlined"
         ></v-text-field>
-        
-          
-        
           <v-checkbox
         density="compact"
           v-model="terms"
           color="green"
           label="I agree to terms and conditions here"
         ></v-checkbox>
- 
-    
-      
       </v-container>
-  
-     
-   
       <v-card-actions >
-        
- 
         <v-btn color="green" block variant="flat" class=" px-4 text-none" @click="Login()">
           Next
-  
           <v-icon icon="mdi-chevron-right" end></v-icon>
         </v-btn>
-       
       </v-card-actions>
       <v-card-actions>
         <v-btn  block variant="outline" class="text-none align-self-end" to="/register">
           New Member?  <span class="text-green">Register Now</span>
         </v-btn>
       </v-card-actions>
-      
     </v-card>
   </div>
   </template>

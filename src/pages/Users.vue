@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <div class='ma-4'>
         <div ><v-text-field
               v-model="searchQuery"
               label="Search"
@@ -11,12 +11,12 @@
             ></v-text-field></div>
       <v-row>
         <v-col>
-          <v-toolbar color="green" dark density="compact">
+          <v-toolbar  dark density="compact">
             <v-toolbar-title>Users <v-icon size='20px'>mdi-format-list-bulleted</v-icon>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             
-            <v-btn color="secondary" @click="openDialog()">Add User</v-btn>
+            <v-btn color="green" @click="openDialog()" class='text-none' variant='flat'>Add User</v-btn>
           </v-toolbar>
   
           <v-data-table
@@ -106,7 +106,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-    </v-container>
+    </div>
   </template>
   
   <script>

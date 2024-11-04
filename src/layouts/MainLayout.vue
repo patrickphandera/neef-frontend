@@ -1,6 +1,6 @@
 <template>
     <v-app >
-        <v-main >
+        <v-main scrollable>
             <router-view>
             </router-view>
         </v-main>

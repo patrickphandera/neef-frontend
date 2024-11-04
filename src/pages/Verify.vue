@@ -115,107 +115,107 @@
 
 
       <v-card class="px-2 ma-1" v-if="toggle && tableResulted" >
-        <div class="font-weight-black pb-4">
+        <div class="mx-4 text-h6 ">
           Parameters description
         </div>
         <v-row>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Gender</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>String</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: <em>'Male'</em>, <em>'Female'</em></v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Gender of the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Required</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div class='text-h6'>Gender</div>
+              <div>Type: String</div>
+              <div>Possible Values: <em>'Male'</em>, <em>'Female'</em></div>
+              <div>Description: Gender of the applicant.</div>
+              <div>Validation: Required</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Age</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any positive integer</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Current age of the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Must be a positive number</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div class="text-body-1">Age</div>
+              <div class="text-body-1">Type: Number</div>
+              <div class="text-body-1">Possible Values: Any positive integer</div>
+              <div class="text-body-1">Description: Current age of the applicant.</div>
+              <div class="text-body-1">Validation: Must be a positive number</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Dependents</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any non-negative integer</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Number of dependents directly relying on the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Cannot be negative</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Dependents</div>
+              <div>Type: Number</div>
+              <div>Possible Values: Any non-negative integer</div>
+              <div>Description: Number of dependents directly relying on the applicant.</div>
+              <div>Validation: Cannot be negative</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Income</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any positive number</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Monthly cumulative income of the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Must be a positive number</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Income</div>
+              <div>Type: Number</div>
+              <div>Possible Values: Any positive number</div>
+              <div>Description: Monthly cumulative income of the applicant.</div>
+              <div>Validation: Must be a positive number</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Loan Amount</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any positive number</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Amount of loan requested by the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Must be a positive number</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Loan Amount</div>
+              <div>Type: Number</div>
+              <div>Possible Values: Any positive number</div>
+              <div>Description: Amount of loan requested by the applicant.</div>
+              <div>Validation: Must be a positive number</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Collateral</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any non-negative number</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Collateral value provided by the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Cannot be negative</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Collateral</div>
+              <div>Type: Number</div>
+              <div>Possible Values: Any non-negative number</div>
+              <div>Description: Collateral value provided by the applicant.</div>
+              <div>Validation: Cannot be negative</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Term</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any positive integer (in months)</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Duration in months for loan payment.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Must be positive</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Term</div>
+              <div>Type: Number</div>
+              <div>Possible Values: Any positive integer (in months)</div>
+              <div>Description: Duration in months for loan payment.</div>
+              <div>Validation: Must be positive</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Rate</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>Number</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: Any positive number (percentage)</v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Payment rate associated with the loan.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Must be positive</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Rate</div>
+              <div>Type: Number</div>
+              <div>Possible Values: Any positive number (percentage)</div>
+              <div>Description: Payment rate associated with the loan.</div>
+              <div>Validation: Must be positive</div>
+            </div>
           </v-list-item>
           </v-col>
           <v-col cols="6" >
             <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Loan Type</v-list-item-title>
-              <v-list-item-subtitle>Type: <strong>String</strong></v-list-item-subtitle>
-              <v-list-item-subtitle>Possible Values: <em>'Youth Enterprise'</em>, <em>'Women Empowerment'</em></v-list-item-subtitle>
-              <v-list-item-subtitle>Description: Category of loan requested by the applicant.</v-list-item-subtitle>
-              <v-list-item-subtitle>Validation: <strong>Required</strong></v-list-item-subtitle>
-            </v-list-item-content>
+            <div>
+              <div>Loan Type</div>
+              <div class="text-h6">Type: String</div>
+              <div>Possible Values: <em>'Youth Enterprise'</em>, <em>'Women Empowerment'</em></div>
+              <div>Description: Category of loan requested by the applicant.</div>
+              <div>Validation: Required</div>
+            </div>
           </v-list-item>
           </v-col>
           

@@ -6,6 +6,10 @@ import vuetify from 'vite-plugin-vuetify';
 export default defineConfig({
   plugins: [
     vue(),
-    vuetify({ autoImport: true }), // Add this line
+    vuetify({ autoImport: true }) // Add this line
+   
   ],
+  build: {
+    outDir: 'dist', // Vercel looks for this directory as the output
+  },
 });
