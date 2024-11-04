@@ -21,7 +21,7 @@ const routes = [
     component: MainLayout,
     children: [
       { path: 'login', component: Login ,name:'Login'},
-      { path: 'register', component: Register },
+      { path: 'register', component: Register,name:'Register' },
       { path: 'otp', component: Otp }
     ]
   },
