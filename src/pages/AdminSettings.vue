@@ -59,7 +59,6 @@
        v-model="user.role"
      variant="outlined"
       label="Role"
-      disable
       :items="['admin','loan-officer']"
       class="mx-2"
       ></v-select>     

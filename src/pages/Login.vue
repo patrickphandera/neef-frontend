@@ -28,7 +28,6 @@
           v-model="credentials.password"
           color="green"
           label="Password"
-          type='password'
           variant="outlined"
         ></v-text-field>
           <v-checkbox

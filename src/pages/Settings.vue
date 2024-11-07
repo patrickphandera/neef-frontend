@@ -57,6 +57,7 @@
       <v-select
       density="compact"
        v-model="user.role"
+        disabled
      variant="outlined"
       label="Role"
       :items="['admin','loan-officer']"
