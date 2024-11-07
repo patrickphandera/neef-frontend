@@ -98,7 +98,6 @@ import { registerUser } from '../services/auth.service';
      formData.append('password',this.password)
      formData.append('role','user')
       const result = await registerUser(formData);
-     
       console.log('User registered successfully:', result);
       this.$router.push('/login');
     } catch (error) {
