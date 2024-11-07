@@ -42,7 +42,7 @@
            type='password'
           color="green"
           label="Password"
-           type='password'
+           
           variant="outlined"
         ></v-text-field>
         <v-text-field
@@ -50,7 +50,6 @@
          type='password'
           v-model="comfrimPassword"
           color="green"
-           type='password'
           label="Comfirm password"
           variant="outlined"
         ></v-text-field>
