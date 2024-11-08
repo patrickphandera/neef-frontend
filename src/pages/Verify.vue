@@ -154,7 +154,7 @@ export default {
   methods: {
     verify() {
       if (this.validateForm()) {
-      if(this.user.age>75 || this.user.age<18 || this.user.dependents<0 || this.user.dependents>5 || this.user.loanamount>1.5*this.user.collateral ){
+      if(this.user.age>75 || this.user.age<18 || this.user.dependents<0 || this.user.dependents>5 || this.user.loanamount>1.5*this.user.collateral || this.user.income>0.25*this.loanamount){
         this.results = 'Not eligible';
       }else if(this.user.dependents<0 ){
  this.messages='Dependants can not be negative'
