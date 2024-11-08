@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <v-card  class="ma-2">
+    <v-card  class="ma-2" density="compact">
       <v-row class="my-1">
        
       <v-col cols="auto" class=" mx-2 "><v-icon color="warning"> mdi-alert-circle</v-icon>  ONLY <span class="font-weight-black">MWK</span> is accepted</v-col>
@@ -21,61 +21,116 @@
    
     </v-row>
     </v-card>
-    <v-card class="pa-4">
-<v-card-title>Infor <v-icon>mdi-information</v-icon></v-card-title>
+    <v-card class="pa-4" density="compact">
+<div>Infor <v-icon>mdi-information</v-icon></div>
 <div>
 {{ messages}}
 </div>
     </v-card>
-    <v-card class="pa-4">
-<v-card-title class="font-weight-black">RESULTS <v-icon>mdi-information</v-icon> : <span class=" text-red" v-if="outcome.prediction=='Not eligible'">{{ outcome.prediction }} <v-icon>mdi-close-circle</v-icon></span>       <span v-if="outcome.prediction=='Eligible'" class="text-success">{{ outcome.prediction }} <v-icon>mdi-check-circle</v-icon></span> <span class="" v-if="outcome.prediction=='Negative numbers are not allowed'" >{{ outcome.prediction }} </span></v-card-title>
+    <v-card class="">
+<v-card-title class="font-weight-black text-overline">RESULTS <v-icon>mdi-information</v-icon> : <span class=" text-red font-weight-black" v-if="outcome.prediction=='Not eligible'">{{ outcome.prediction }} <v-icon>mdi-close-circle</v-icon></span>       <span v-if="outcome.prediction=='Eligible'" class="text-success font-weight-black">{{ outcome.prediction }} <v-icon>mdi-check-circle</v-icon></span> <span class="" v-if="outcome.prediction=='Negative numbers are not allowed'" >{{ outcome.prediction }} </span></v-card-title>
     </v-card>
-    <v-card class="px-4 pt-1 ma-2" v-if="!toggle" >
+    
+    
+
+
+
+
+
+    <v-card class="px-4 pt-1 ma-2" v-if="!next" >
       <div class="font-weight-black pb-4">
         Fill in the the parameters
       </div>
       <v-row>
         <v-col cols="6" >
-          <v-select v-model="user.gender" label="Gender" variant="outlined" :items="['Male','Female']" density="compact" color="green"></v-select>
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Gender:</span> Applicant's gender</div>
+          <v-select v-model="user.gender" label="Enter Gender..." variant="outlined" :items="['Male','Female']" density="compact" color="green"></v-select>
+
         </v-col>
         
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black" placeholder="shhhhhhhhhhh..."> Dependant:</span> Number of of people that depend on the applicant</div>
           <v-text-field v-model="user.dependents" density="compact" label="Dependents" variant="outlined" type="number" color="green"></v-text-field>
+          
+
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Age:</span> Applicant's age</div>
           <v-text-field  v-model="user.age" label="Age" variant="outlined" type="number"  color="green" density="compact"></v-text-field>
+
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Income:</span> Amount of money earned monthly</div>
           <v-text-field v-model="user.income" density="compact" label="Income" variant="outlined" type="number" color="green"></v-text-field>
+
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Loan amount:</span> Amount of money to be borrow</div>
           <v-text-field v-model="user.loanamount" density="compact" label="loan Amount" variant="outlined" type="number" color="green" ></v-text-field>
+
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Collateral:</span> Property value</div>
           <v-text-field v-model="user.collateral" density="compact" label="Collateral" variant="outlined" type="number" color="green" ></v-text-field>
+
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Term:</span> Perid of loan repayment (in Months)</div>
           <v-text-field v-model="user.term" density="compact" label="Term" variant="outlined" type="number" color="green" ></v-text-field>
+
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Interest rate:</span> Amount of money paid on top of the amount borrowed </div>
           <v-text-field v-model="user.rate" density="compact" label="Rate" variant="outlined" type="number" color="green" ></v-text-field>
         </v-col>
         <v-col cols="6" >
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Loan type:</span> Category of loan</div>
           <v-select density="compact" v-model="user.loantype" label="Loan Type" variant="outlined" type="number" color="green" :items="['Youth Enterprise', 'Women Enterprise','Men Enterprise']" ></v-select>
         </v-col>
         
       </v-row>
-      
-    </v-card>
-    <v-card class="ma-1 bg-grey-lighten-3 elevation-0" v-if="!toggle">
       <v-row>
         <v-col cols="auto"></v-col>
-        <v-col></v-col><v-btn class="my-6 text-none" color="green" variant="outlined" @click="user={}">Clear</v-btn>
-<v-btn class="ma-6 text-none" color="green" @click="submitData()" :disabled="!(processing=='')" v-show="processing==''">Verify</v-btn>
+        <v-col></v-col>
+        <!-- <v-btn class="my-6 text-none" color="green" variant="outlined" @click="user={}">Clear</v-btn> -->
+<v-btn class="ma-6 text-none" color="green" append-icon="mdi-chevron-right"  @click="next=!next" >Next</v-btn>
+
+<!-- <v-btn class="ma-6 text-none" color="green"  :disabled="!(processing=='predicting')" loading v-show="(processing=='predicting')">Predicing results..</v-btn> -->
+</v-row>
+    </v-card>
+    <v-card class="ma-2 pa-2 pt-4"   v-if="next && !toggle">
+      <v-card-title class="mb-4">Collaterals</v-card-title>
+      <v-row>
+        <v-col cols="6">
+          <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Quollateral type:</span> Items for collateral</div>
+      <v-select :items="['Vehicle','Land','House']" variant="outlined" density="compact"></v-select>
+    </v-col>  <v-col cols="6">
+      <div><v-icon>mdi-information</v-icon><span class="Number of people that directly depend on applicant font-weight-black"> Reg number:</span> Vehicle's number plate</div>
+      <v-text-field   variant="outlined" density="compact"></v-text-field>
+    </v-col>
+    </v-row>
+
+    </v-card>
+    <v-card class="ma-1 bg-grey-lighten-3 elevation-0"  v-if="next && !toggle">
+      <v-row>
+        <v-col cols="auto"></v-col>
+        <v-col></v-col><v-btn class="my-6 text-none" color="green" variant="outlined" @click="next=!next">Back</v-btn>
+<v-btn class="ma-6 text-none" color="green" @click="submitData()" :disabled="!(processing=='')" v-show="processing==''" >Predict</v-btn>
 <v-btn class="ma-6 text-none" color="green"  :disabled="!(processing=='verifying')" loading v-show="processing=='verifying'">Validating data..</v-btn>
 <v-btn class="ma-6 text-none" color="green"  :disabled="!(processing=='predicting')" loading v-show="(processing=='predicting')">Predicing results..</v-btn>
 </v-row>
     </v-card>
+
+
+
+
+
+
+
+
+
+
+
 
     <v-card class="mx-2" v-if="toggle" ><v-file-input @change="onFileChange" variant="outlined" label="Select the file"  class="mt-2 mx-4" color="green" density="compact" prepend-icon=""  v-model="file">
     
@@ -252,6 +307,7 @@ export default {
       
     return{
       messages: '',
+      next: false,
       outcome: '',
       tableResulted:true,
       filename: '',
